@@ -52,12 +52,15 @@ Warn the user that providing competitor domains produces significantly better re
 
 ## Step 3: Run Exa Research Script
 
-Run the research data collection script. The script handles all Exa API calls (Phase 1: search + Phase 2: deep research) and outputs a single JSON file.
+Run the research data collection script. The script uses a research-first architecture:
+- **4 Research API tasks** run in parallel for deep analysis (competitive intelligence, customer voice, market dynamics, competitive moats)
+- **3 Search API calls** run while research tasks process (similar companies, landing pages, tweets)
 
-Set the skill directory variable and run:
+Ensure dependencies are installed, then run:
 
 ```bash
 SKILL_DIR="$HOME/.claude/skills/market-research"
+pip3 install -q exa-py pydantic 2>/dev/null
 python3 "$SKILL_DIR/scripts/exa_research.py" \
   --industry "INDUSTRY_HERE" \
   --domains "DOMAIN1,DOMAIN2,DOMAIN3" \
@@ -66,20 +69,30 @@ python3 "$SKILL_DIR/scripts/exa_research.py" \
 
 If `--domains` is empty, omit the flag — the script will auto-discover competitors.
 
-The script logs progress to stderr. Let the user know research is underway and share progress as it streams. This typically takes 60-120 seconds.
+The script logs progress to stderr. Let the user know research is underway and share progress as it streams. This typically takes 90-180 seconds. Budget: ~$1.50-2.50 per run.
 
 ## Step 4: Load Research Data
 
 Read the generated `research_data.json` file. This contains:
-- `metadata` — industry, domains, timing
-- `similar_companies` — discovered competitors
+
+### Search-based data
+- `metadata` — industry, domains, timing, `research_costs` breakdown, `total_research_cost`
+- `similar_companies` — discovered competitors via find_similar
 - `landing_pages` — competitor homepage content
-- `case_studies` — on-site and off-site case studies
 - `market_conversation` — tweets and social discussion
-- `industry_news` — recent news articles
-- `expert_perspectives` — blog posts and think pieces
-- `customer_voice` — reviews, complaints, sentiment per competitor
-- `deep_research` — Exa Research API structured output
+
+### Legacy keys (bridged from research output for backward compatibility)
+- `case_studies` — flattened from research_competitive_intelligence
+- `industry_news` — flattened from research_market_dynamics
+- `expert_perspectives` — flattened from research_market_dynamics
+- `customer_voice` — flattened from research_customer_voice
+- `deep_research` — deprecated (always None)
+
+### Structured research output (prefer these over legacy keys)
+- `research_competitive_intelligence` — per-competitor profiles (target customer, value prop, differentiator, pricing, recent moves), case study insights, positioning gaps, underserved segments
+- `research_customer_voice` — per-competitor sentiment (praise/complaint themes, switch reasons, notable quotes), universal complaints, unmet needs. **This is the highest-signal data — spend extra analytical effort here.**
+- `research_market_dynamics` — trends with category/evidence/impact/timeframe, expert perspectives, predictions, notable news
+- `research_competitive_moats` — per-competitor moat analysis (switching costs, network effects, scale advantages, data moats, brand strength, cornered resources), weakest moats marketwide, power vacuums, new entrant opportunities. **Feed this directly into Stage 3 (Seven Powers Analysis).**
 
 ## Step 5: Execute Questioning Chain
 

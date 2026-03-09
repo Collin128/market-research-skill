@@ -66,8 +66,8 @@ Providing competitor domains produces significantly better results. The skill wi
 
 ## How It Works
 
-1. **Discovery & Expansion** — Uses Exa's search API to find similar companies, pull landing pages, case studies, tweets, news, expert perspectives, and customer reviews/complaints
-2. **Deep Research** — Uses Exa's Research API for structured competitive positioning, market trends, and customer pain point analysis
+1. **Research-First Collection** — Fires 4 parallel Exa Research API tasks (competitive intelligence, customer voice, market dynamics, competitive moats) with Pydantic structured output schemas, while simultaneously running 3 search calls (similar companies, landing pages, tweets) that the Research API can't replace
+2. **Structured Synthesis** — Research tasks return typed, structured data (competitor profiles, sentiment analysis, trend categorization, moat assessments) that feeds directly into the analytical chain
 3. **Questioning Chain** — Runs a 5-stage analytical chain (Unspoken Insight → Foundational Assumptions → Seven Powers Analysis → Investor Destruction Test → Stress Test Loop)
 4. **Output Generation** — Synthesizes everything into a clean strategy document saved as markdown
 
