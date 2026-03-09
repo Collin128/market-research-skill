@@ -89,7 +89,7 @@ Read the questioning chain prompts from the skill directory:
 ~/.claude/skills/market-research/references/questioning-chain.md
 ```
 
-Execute all four stages sequentially, using the research data as context:
+Execute all five stages sequentially, using the research data as context:
 
 ### Stage 1: The Unspoken Insight
 - Replace `{{industry}}` and `{{competitors}}` with actual values
@@ -101,14 +101,20 @@ Execute all four stages sequentially, using the research data as context:
 - Generate 3 structural assumptions with all 4 sub-points each
 - Each assumption must be specific to this market
 
-### Stage 3: Investor Destruction Test
+### Stage 3: Seven Powers Analysis
 - Reference Stages 1 and 2
+- Apply Hamilton Helmer's Seven Powers framework to each competitor
+- For each competitor: identify which powers they hold (with evidence), rate durability
+- Identify which powers no competitor holds and the biggest power vacuum for a new entrant
+
+### Stage 4: Investor Destruction Test
+- Reference Stages 1, 2, and 3
 - Generate 5 sharp Q&A pairs
 - Rate each answer's evidence quality (STRONG/MODERATE/WEAK)
 - Identify gaps explicitly
 
-### Stage 4: Stress Test Loop
-- Review Stage 3 answers
+### Stage 5: Stress Test Loop
+- Review Stage 4 answers
 - Rate each 1-10
 - Stress test anything scoring 7 or below
 - **Maximum 2 iterations** — consolidate remaining gaps into Open Questions
@@ -124,7 +130,7 @@ Read the output template:
 
 Populate every section using:
 - Research data for factual sections (Competitive Landscape, Case Studies, Customer Voice, Market Dynamics)
-- Questioning chain outputs for analytical sections (Unspoken Insight, Foundational Assumptions, Stress Test)
+- Questioning chain outputs for analytical sections (Unspoken Insight, Foundational Assumptions, Seven Powers Analysis, Stress Test)
 - Consolidated gaps for Open Questions
 - All source URLs for the Sources section
 

@@ -14,6 +14,7 @@ A comprehensive strategy document covering:
 - **Market Dynamics** — trends, funding, regulatory shifts
 - **The Unspoken Insight** — what separates winners from losers in this market
 - **Foundational Assumptions** — structural assumptions the market is built on and how they break
+- **Seven Powers Analysis** — Hamilton Helmer's framework applied to each competitor's moats and durability
 - **Investor Destruction Test** — 5 sharp questions that expose real risks, with evidence-based answers
 - **Gaps & Open Questions** — what still needs primary research
 
@@ -67,7 +68,7 @@ Providing competitor domains produces significantly better results. The skill wi
 
 1. **Discovery & Expansion** — Uses Exa's search API to find similar companies, pull landing pages, case studies, tweets, news, expert perspectives, and customer reviews/complaints
 2. **Deep Research** — Uses Exa's Research API for structured competitive positioning, market trends, and customer pain point analysis
-3. **Questioning Chain** — Runs a 4-stage analytical chain (Unspoken Insight → Foundational Assumptions → Investor Destruction Test → Stress Test Loop)
+3. **Questioning Chain** — Runs a 5-stage analytical chain (Unspoken Insight → Foundational Assumptions → Seven Powers Analysis → Investor Destruction Test → Stress Test Loop)
 4. **Output Generation** — Synthesizes everything into a clean strategy document saved as markdown
 
 Total runtime is typically 2-5 minutes. Exa API cost is approximately $1.50-5.50 per run depending on the number of competitors.
@@ -81,7 +82,7 @@ market-research/
 │   ├── exa_research.py               # Exa API data collection
 │   └── requirements.txt              # Python dependencies
 ├── references/
-│   └── questioning-chain.md          # 4-stage analytical prompt chain
+│   └── questioning-chain.md          # 5-stage analytical prompt chain
 └── assets/
     └── output-template.md            # Output document template
 ```

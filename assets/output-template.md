@@ -36,9 +36,13 @@
 
 <!-- Stage 2 output. Three assumptions, each with: the assumption, why the market treats it as true, what breaks it, and early signals. Format each as a clear subsection. -->
 
+## Seven Powers Analysis
+
+<!-- Stage 3 output. For each competitor: which of Helmer's 7 powers they hold (with evidence), durability rating, and analysis. Then: which powers no one holds, and the biggest power vacuum for a new entrant. -->
+
 ## Stress Test: Investor Questions
 
-<!-- Stage 3 + Stage 4 output. Five Q&A pairs. For each: the question, the evidence-based answer, the evidence quality rating, and (if applicable) the stress-tested version. Be honest about gaps. -->
+<!-- Stage 4 + Stage 5 output. Five Q&A pairs. For each: the question, the evidence-based answer, the evidence quality rating, and (if applicable) the stress-tested version. Be honest about gaps. -->
 
 ## Gaps & Open Questions
 
