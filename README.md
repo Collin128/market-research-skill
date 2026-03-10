@@ -4,6 +4,8 @@ A Claude Code skill that compresses weeks of competitive and market research int
 
 Combines [Exa's](https://exa.ai) semantic search and research APIs for automated intelligence gathering with Claude's reasoning for a multi-stage analytical workflow.
 
+Inspired by Rimsha Bhardwaj's (@heyrimsha) [tweet]([url](https://xcancel.com/heyrimsha/status/2030614728591167973)).
+
 ## What You Get
 
 A comprehensive strategy document covering:
